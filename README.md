@@ -16,8 +16,10 @@
 5.     Insert each new edge entry into edge_list:
   5.    Sort each edge(target/actor) alphabetically, since this is undirected
   5.    Check that the edge doesn't already exist, if it does, update timestamp of that edge (no need to check for reverse order, because each edge entry is already sorted)
-6.      Call calc_median_degree()
+6.     Call calc_median_degree()
   6.    Concatenate the 2 columns of nodes in the edge_list
+  6.    Use python's counter to count number of occurence of each node in the edgelist, to get the degree count for each node
+  6.    Then use python's statistics package to get the median
 
 ### src/rolling_median.py already imports all the pacakges it needs. 
 

@@ -19,6 +19,8 @@
 
 # 6.     Call calc_median_degree()
 # 6a.    Concatenate the 2 columns of nodes in the edge_list
+# 6b.    Use python's counter to count number of occurence of each node in the edgelist, to get the degree count for each node
+# 6c.    Then use python's statistics package to get the median
 
 #Note that /venmo_input/venmo-trans.txt is listed in gitignore because it's so big
 
@@ -76,6 +78,9 @@ def main():
     OUTPUT_FILE.close();
 
 
+
+
+
 ####### Functions are defined here #######
 
 # 3.     Check and update timestamp: 
@@ -107,22 +112,21 @@ def update_edge_list(transaction_timestamp,new_edge_to_be_added):
         EDGE_LIST.append([transaction_timestamp,new_edge_to_be_added])
     return True;
 
+# 6.     Call calc_median_degree()
+# 6a.    Concatenate the 2 columns of nodes in the edge_list
+# 6b.    Use python's counter to count number of occurence of each node in the edgelist, to get the degree count for each node
+# 6c.    Then use python's statistics package to get the median
 def calc_median_degree():
     global EDGE_LIST
     global OUTPUT_FILE
     all_edges=getColumn(EDGE_LIST,1)
-    list_of_all_nodes_with_duplicates = [item for sublist in all_edges for item in sublist] #followed this: http://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python
-    num_nodes=len(list_of_all_nodes_with_duplicates)
-    counts_of_occurences=list(Counter(list_of_all_nodes_with_duplicates).values())
+    list_of_all_nodes_with_duplicates = [item for sublist in all_edges for item in sublist] #Concatenate the 2 columns of nodes. Followed this: http://stackoverflow.com/questions/952914/making-a-flat-list-out-of-list-of-lists-in-python
+    counts_of_occurences=list(Counter(list_of_all_nodes_with_duplicates).values()) # 6b.    Use python's counter to count number of occurence of each node in the edgelist, to get the degree count for each node
     if DEBUG: print("counts_of_occurences: ",counts_of_occurences)
-    median_degree_untruncated=0.00
-    if (num_nodes==0):
-        OUTPUT_FILE.write('0.00') 
-    else:  
-        median_degree_untruncated=statistics.median(counts_of_occurences)
-        before_dec, after_dec = str('%.3f'%(median_degree_untruncated)).split('.')
-        median_degree='.'.join((before_dec, after_dec[0:2]))
-        OUTPUT_FILE.write(median_degree)
+    median_degree_untruncated=statistics.median(counts_of_occurences) # 6c.    Then use python's statistics package to get the median
+    before_decimal, after_decimal = str('%.3f'%(median_degree_untruncated)).split('.')
+    median_degree='.'.join((before_decimal, after_decimal[0:2]))
+    OUTPUT_FILE.write(median_degree)
     OUTPUT_FILE.write("\n")
     return True;
 
