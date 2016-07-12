@@ -12,7 +12,7 @@
 3.     Check and update timestamp: 
   3.    If timestamp is older than 60s, jump to call calc_median_degree() to end. This is done in accordance with what the FAQ said about still outputting a median value for each transaction even if the transaction is outside 60-second window
   3.     If timestamp is newer than newest, update the global newest_timestamp value
-4.     Delete edges that are older than 60 seconds. O(n) runtime complexity because the edgelist is not sorted by timestamp (it's not sorted at all). A b-tree will bring it to O(log n) for each insertion and deletion, but will require resorting.
+4.     Delete edges that are older than 60 seconds. O(n) runtime complexity because the edgelist is not sorted by timestamp (it's not sorted at all). A b-tree will bring it to O(log n) for each insertion and deletion, and will also require resorting if vast amounts of it is deleted.
 5.     Insert each new edge entry into edge_list, checking that this new entry doesn't already exist.
   5.    Sort each edge (target, actor) alphabetically, since this is an undirected graph (e.g {target,actor} is equal to {actor,target})
   5.    Check that the edge doesn't already exist, if it does, update timestamp of that edge (no need to check for reverse order of the edge because each edge entry is already sorted). O(n) runtime complexity because edgelist is not sorted by edges (where an edge is: node name - node name).
