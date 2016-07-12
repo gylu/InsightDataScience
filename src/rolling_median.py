@@ -41,7 +41,7 @@ sys_argv2 = sys.argv[2] #'./venmo_output/output.txt'
 NEWEST_TIMESTAMP=0.00 #global vairable
 EDGE_LIST=[] #of the format: [ [timestamp1,['actor1','target1']], [timestamp2,['actor2','target2']], ...etc]
 OUTPUT_FILE=""
-DEBUG=True
+DEBUG=False
 if DEBUG: print("\nStarted")
 
 def main():
