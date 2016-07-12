@@ -12,7 +12,7 @@
 3.     Check and update timestamp: 
   3.    If timestamp is older than 60s, jump to call calc_median_degree() to end. This is done in accordance with what the FAQ said about still outputting a median value for each transaction even if the transaction is outside 60-second window
   3.     If timestamp is newer than newest, update the global newest_timestamp value
-4.     Delete edges that are older than 60 seconds. O(n) runtime complexity because the edgelist is not sorted by timestamp (it's not sorted at all). A sorted edge list might be able to bring it to  O(log n) for each insertion and deletion.
+4.     Delete edges that are older than 60 seconds. O(n) runtime complexity because the edgelist is not sorted by timestamp (it's not sorted at all). A sorted edge list will bring it to  O(log n) for each insertion and deletion.
 5.     Insert each new edge entry into edge_list, checking that this new entry doesn't already exist. O(n) runtime complexity.
   5.    Sort each edge (target, actor) alphabetically, since this is an undirected graph
   5.    Check that the edge doesn't already exist, if it does, update timestamp of that edge (no need to check for reverse order of the edge because each edge entry is already sorted)
@@ -28,8 +28,8 @@ The following packages are used/imported:
 * import sys - for reading the arugments of the run.sh command
 * import json - for processing json
 * import os - for checking if output.txt already exists, and deleting it if it does
-* import statistics  - used for finding the median
 * from collections import Counter - used for counting number of occurences in edgelist to get the vertex of a node
+* import statistics  - used for finding the median
 * import pdb - python debugger, used for debugging
 
 #### Note that this repo started off as a clone of https://github.com/InsightDataScience/coding-challenge
