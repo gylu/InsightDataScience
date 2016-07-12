@@ -3,7 +3,7 @@
 ## The solution file to this coding challenge is src/rolling_median.py 
 #### Python 3 is used, therefore the environment needs to have it installed
 
-### Overview of what src/rolling_median.py does:
+### Description of what src/rolling_median.py does:
 ##### Note that steps 2 through 6 is performed for each transaction
 ##### Note that EDGE_LIST is a list of lists with the format: [ [timestamp1,['actor1','target1']], [timestamp2,['actor2','target2']], ...etc]
 
